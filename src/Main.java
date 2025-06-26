@@ -11,16 +11,14 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             try {
-                // Cargar datos persistidos
+                
                 IPersistencia persistencia = new PersistenciaArchivo();
                 Clinica clinica = persistencia.cargarClinica();
 
-                // Conectar el modelo con la vista
                 ClinicaViewModel viewModel = new ClinicaViewModel(clinica);
                 VentanaPrincipal ventana = new VentanaPrincipal(viewModel);
                 ventana.setVisible(true);
 
-                // Guardar datos al cerrar la aplicación
                 ventana.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -21,7 +21,7 @@ public class VentanaPrincipal extends JFrame {
         setLayout(new BorderLayout());
 
         // Estilo general
-        Color colorPrincipal = new Color(25, 118, 210); // azul médico
+        Color colorPrincipal = new Color(25, 118, 210);
         Font fuenteTitulo = new Font("Arial", Font.BOLD, 18);
         Font fuenteBoton = new Font("Arial", Font.PLAIN, 14);
 
@@ -33,17 +33,15 @@ public class VentanaPrincipal extends JFrame {
         titulo.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
         add(titulo, BorderLayout.NORTH);
 
-        // Botonera (ahora vertical y centrada)
         JPanel menu = new JPanel();
         menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
         menu.setBackground(Color.WHITE);
-        menu.setBorder(BorderFactory.createEmptyBorder(40, 200, 40, 200)); // márgenes laterales y verticales
+        menu.setBorder(BorderFactory.createEmptyBorder(40, 200, 40, 200));
 
         JButton btnRegistro = crearBoton("Registrar Persona", colorPrincipal, fuenteBoton);
         JButton btnConsulta = crearBoton("Registrar Consulta", colorPrincipal, fuenteBoton);
         JButton btnHistorial = crearBoton("Consultar Historial", colorPrincipal, fuenteBoton);
 
-        // Alinear botones y espaciar
         btnRegistro.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnConsulta.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnHistorial.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -56,12 +54,10 @@ public class VentanaPrincipal extends JFrame {
 
         add(menu, BorderLayout.CENTER);
 
-        // Panel dinámico que se irá mostrando en pantalla
         panelActual = new JPanel();
         panelActual.setBackground(Color.WHITE);
-        add(panelActual, BorderLayout.SOUTH); // se usará temporalmente
+        add(panelActual, BorderLayout.SOUTH);
 
-        // Eventos de botones
         btnRegistro.addActionListener(e -> mostrarPanel(new PanelRegistro(viewModel)));
         btnConsulta.addActionListener(e -> mostrarPanel(new PanelConsulta(viewModel)));
         btnHistorial.addActionListener(e -> mostrarPanel(new PanelHistorial(viewModel)));
@@ -94,12 +90,10 @@ public class VentanaPrincipal extends JFrame {
     private void mostrarPanel(JPanel nuevoPanel) {
         remove(panelActual);
         panelActual = nuevoPanel;
-        add(panelActual, BorderLayout.SOUTH); // coloca el panel debajo del menú
+        add(panelActual, BorderLayout.SOUTH);
         revalidate();
         repaint();
     }
-
-    // Look & Feel moderno (Nimbus)
     public static void setNimbusLookAndFeel() {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -109,7 +103,6 @@ public class VentanaPrincipal extends JFrame {
                 }
             }
         } catch (Exception e) {
-            // Si no se puede aplicar, no hacer nada
         }
     }
 }

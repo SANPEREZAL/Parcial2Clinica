@@ -20,7 +20,7 @@ public class PersistenciaArchivo implements IPersistencia {
     public Clinica cargarClinica() throws IOException, ClassNotFoundException {
         File file = new File(ARCHIVO);
         if (!file.exists()) {
-            // Si no existe el archivo, retornamos una nueva instancia vacía
+
             return new Clinica();
         }
 
